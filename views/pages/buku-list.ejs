@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Sesuaikan jika ada CSS lain -->
+</head>
+<body>
+    <div class="container" style="padding: 20px;">
+        <h1>Daftar Buku Perpustakaan</h1>
+        <a href="/buku/tambah" class="btn btn-primary" style="margin-bottom: 15px; display: inline-block;">+ Tambah Buku Baru</a>
+        
+        <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>No</th>
+                    <th>Judul</th>
+                    <th>Penulis</th>
+                    <th>Kategori</th>
+                    <th>Harga Denda</th>
+                    <th>Stok</th>
+                    <th>Tanggal Masuk</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (bukuList && bukuList.length > 0) { %>
+                    <% bukuList.forEach((buku, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= buku.judul %></td>
+                            <td><%= buku.penulis %></td>
+                            <td><%= buku.kategori %></td>
+                            <td><%= buku.harga_denda %></td>
+                            <td><%= buku.stok %></td>
+                            <td><%= buku.tanggal_masuk ? buku.tanggal_masuk.toISOString().split('T')[0] : '' %></td>
+                            <td>
+                                <a href="/buku/edit/<%= buku.id %>">Edit</a> | 
+                                <form action="/buku/hapus/<%= buku.id %>" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus buku ini?');">
+                                    <button type="submit" style="background:none; color:red; border:none; cursor:pointer; padding:0;">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="8" style="text-align: center;">Belum ada data buku.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
