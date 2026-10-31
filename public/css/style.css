@@ -1,0 +1,26 @@
+/* Pengaturan Dasar Tampilan */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+/* Gaya untuk Header atau Navigasi */
+header {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Gaya untuk Konten Utama */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
